@@ -1,6 +1,6 @@
 /** AiFotofilm V20.2 modular extraction; canonical source lines 375-472. */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { callGemini, callGeminiWithImages, fetchImageAsBase64 } from 'gemini-api';
+import { callGemini, callGeminiWithImages, fetchImageAsBase64 } from './gemini-api';
 import { split64, toB64, LOCK } from '../core/shared';
 
 // ═══════════════════════════════════════════════════════════════════════════
