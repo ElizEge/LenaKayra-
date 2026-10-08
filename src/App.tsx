@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
+const pad = (n: number | string) => String(n).padStart(2, "0");
+
 (() => {
     try {
         const w: any = typeof window !== 'undefined' ? window : {};
