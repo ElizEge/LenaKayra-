@@ -1843,6 +1843,25 @@ export default function App() {
     const [settingsOpen, setSettingsOpen] = useState(false);
     // Owner opt-in: enable only on your own browser with ?privateGallery=1.
     // This is UI visibility, NOT authorization. GitHub enforces private repo access.
+    const [remoteGallery, setRemoteGallery] = useState<{ enabled: boolean; label: string; url: string } | null>(null);
+    useEffect(() => {
+        let active = true;
+        const url = 'https://raw.githubusercontent.com/ElizEge/LenaKayra-/aifotofilm-web-staging/public/aifotofilm-config.json';
+        const load = async () => {
+            try {
+                const response = await fetch(url + '?v=' + Date.now(), { cache: 'no-store' });
+                if (!response.ok) return;
+                const data = await response.json();
+                const cfg = data?.features?.privateGallery;
+                if (active && cfg && typeof cfg.enabled === 'boolean' && typeof cfg.label === 'string' && typeof cfg.url === 'string'
+                    && cfg.url.startsWith('https://github.com/ElizEge/AiFotofilm-Private-Gallery/')) {
+                    setRemoteGallery({ enabled: cfg.enabled, label: cfg.label, url: cfg.url });
+                }
+            } catch (e) { /* Remote config is optional; app remains usable offline. */ }
+        };
+        load();
+        return () => { active = false; };
+    }, []);
     const [privateGalleryEnabled] = useState(() => {
         try {
             const params = new URLSearchParams(window.location.search);
@@ -2152,7 +2171,7 @@ export default function App() {
                             <label className="flex items-center gap-1.5 cursor-pointer" title="Her üretimde prompt ön denetimi ve görsel denetimi"><input type="checkbox" className="accent-[#8B5CF6]" checked={engine} onChange={e => setEngine(e.target.checked)} />Tutarlılık motoru</label>
                             <label className="flex items-center gap-1.5 cursor-pointer" title="Süreklilik puanı düşükse kareyi otomatik yeniden üretir"><input type="checkbox" className="accent-[#8B5CF6]" checked={autoFix} onChange={e => setAutoFix(e.target.checked)} />Otomatik düzelt</label>
                             <label className="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" className="accent-[#8B5CF6]" checked={showP} onChange={e => setShowP(e.target.checked)} />Promptlar</label>
-                            {privateGalleryEnabled && <a href="https://github.com/ElizEge/AiFotofilm-Private-Gallery/blob/main/gallery/GALLERY.md" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-violet-500/30 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 font-semibold" title="Özel GitHub galerisini yeni sekmede açar; görselleri otomatik kaydetmez">🔒 Özel Galerim ↗</a>}
+                            {privateGalleryEnabled && remoteGallery?.enabled !== false && <a href={remoteGallery?.url || "https://github.com/ElizEge/AiFotofilm-Private-Gallery/blob/main/gallery/GALLERY.md"} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-violet-500/30 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 font-semibold" title="Özel GitHub galerisini yeni sekmede açar; görselleri otomatik kaydetmez">{remoteGallery?.label || '🔒 Özel Galerim ↗'}</a>}
                             <Btn tone="g" onClick={() => setSettingsOpen(true)}>⚙ Ayarlar</Btn>
                         </div>
                     </div>
