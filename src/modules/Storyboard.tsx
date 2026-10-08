@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { callGemini } from '../engine/gemini-api';
 import { SYS } from '../engine/continuity';
 import { usePersist, toB64, chk, need, LOCK, RATIOS, Btn, ActBtn, Sel, Area, Box, LinkToggle, AssetCard, RefSlot, useScenario } from '../core/shared';
-import { pad } from 'ImageLab';
+import { pad } from './ImageLab';
 
 export const StoryTab = ({ S }: any) => {
     const [scenario, setScenario] = useScenario(S, 'story');
