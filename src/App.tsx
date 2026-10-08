@@ -297,11 +297,6 @@ const generateImage = async (
             imageConfig: { aspectRatio: safeRatio }
         }
     };
-    
-    const normalizedSeed = normalizeSeed(seed);
-    if (normalizedSeed !== undefined) {
-        payload.generationConfig.imageConfig.seed = normalizedSeed;
-    }
 
     const data = await callApiWithRetry(buildApiUrl(GEMINI_IMAGE_MODEL, 'generateContent'), payload, 2, 2000, signal);
 
