@@ -37,13 +37,17 @@ export async function loadPublicGithubMemory(
   try {
     const response = await fetch(url, {
       method: 'GET', signal, cache: 'no-store',
-      headers: { Accept: 'application/vnd.github.raw+json' }
+      headers: { Accept: 'application/vnd.github+json' }
     });
     if (!response.ok) return { ok: false, status: response.status,
       error: response.status === 404 ? 'Uzak proje hafızası henüz oluşturulmamış.' :
         'GitHub hafıza okuma hatası (HTTP ' + response.status + ').' };
-    const sha = response.headers.get('etag') || '';
-    const body: unknown = await response.json();
+    const file: { sha?: string; encoding?: string; content?: string } = await response.json();
+    if (!file.sha || file.encoding !== 'base64' || !file.content) return { ok: false, error: 'GitHub dosya biçimi desteklenmiyor.' };
+    const binary = atob(file.content.replace(/\\s/g, ''));
+    const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
+    const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
+    const sha = file.sha;
     if (!validateProductionMemory(body)) return { ok: false, error: 'Uzak hafıza şeması geçersiz.' };
     if (body.projectId !== projectId) return { ok: false, error: 'Uzak hafıza proje kimliği uyuşmuyor.' };
     return { ok: true, snapshot: { memory: body, sha, source: url } };
