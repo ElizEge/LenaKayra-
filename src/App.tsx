@@ -1,19 +1,19 @@
 /** AiFotofilm V20.2 modular extraction; canonical source lines 1698-2016. */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './platform/canvas-compat';
-import { callGemini, callGeminiWithImages, detectClosestAspectRatio, generateImage } from 'engine/gemini-api';
-import { INITIAL_CHARACTERS, DEFAULT_INFLUENCER_PROFILES } from 'config/production-presets';
-import { SYS, normV, auditPromptService, auditImageService } from 'engine/continuity';
-import { Icons } from 'components/Icons';
-import { PFX, LS, SAVE, usePersist, uid, toB64, chk, need, isAbort, LOCK, TABS, XFER, newScene, Btn, verdictOk, hasScore, Inspector } from 'core/shared';
-import { StudioTab } from 'modules/Studio';
-import { RejiTab } from 'modules/Reji';
-import { LabTab } from 'modules/ImageLab';
-import { NextTab } from 'modules/NextFrame';
-import { StoryTab } from 'modules/Storyboard';
-import { VideoTab } from 'modules/VideoPrep';
-import { InfluencerTab } from 'modules/Influencer';
-import { CastManager, ProjectBar, JobBar, Dock, SettingsModal } from 'components/ProjectControls';
+import { callGemini, callGeminiWithImages, detectClosestAspectRatio, generateImage } from './engine/gemini-api';
+import { INITIAL_CHARACTERS, DEFAULT_INFLUENCER_PROFILES } from './config/production-presets';
+import { SYS, normV, auditPromptService, auditImageService } from './engine/continuity';
+import { Icons } from './components/Icons';
+import { PFX, LS, SAVE, usePersist, uid, toB64, chk, need, isAbort, LOCK, TABS, XFER, newScene, Btn, verdictOk, hasScore, Inspector } from './core/shared';
+import { StudioTab } from './modules/Studio';
+import { RejiTab } from './modules/Reji';
+import { LabTab } from './modules/ImageLab';
+import { NextTab } from './modules/NextFrame';
+import { StoryTab } from './modules/Storyboard';
+import { VideoTab } from './modules/VideoPrep';
+import { InfluencerTab } from './modules/Influencer';
+import { CastManager, ProjectBar, JobBar, Dock, SettingsModal } from './components/ProjectControls';
 
 export default function App() {
     const [tab, setTab] = useState('studio');
