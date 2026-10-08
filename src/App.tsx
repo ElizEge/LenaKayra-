@@ -1841,6 +1841,22 @@ export default function App() {
     const [insp, setInsp] = useState<any>(null); 
     const [castOpen, setCastOpen] = useState(false); 
     const [settingsOpen, setSettingsOpen] = useState(false);
+    // Owner opt-in: enable only on your own browser with ?privateGallery=1.
+    // This is UI visibility, NOT authorization. GitHub enforces private repo access.
+    const [privateGalleryEnabled] = useState(() => {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('privateGallery') === '1') {
+                localStorage.setItem('ai_fotofilm_private_gallery_enabled', '1');
+                params.delete('privateGallery');
+                const query = params.toString();
+                window.history.replaceState(null, '', window.location.pathname + (query ? '?' + query : '') + window.location.hash);
+                return true;
+            }
+            return localStorage.getItem('ai_fotofilm_private_gallery_enabled') === '1';
+        } catch (e) { return false; }
+    });
+
     const [epoch, setEpoch] = useState(0); 
     const [dockOpen, setDockOpen] = usePersist('dock.open', true);
     const Q = useRef<any>({ running: 0, wait: [], ctl: {} }); 
@@ -2136,6 +2152,7 @@ export default function App() {
                             <label className="flex items-center gap-1.5 cursor-pointer" title="Her üretimde prompt ön denetimi ve görsel denetimi"><input type="checkbox" className="accent-[#8B5CF6]" checked={engine} onChange={e => setEngine(e.target.checked)} />Tutarlılık motoru</label>
                             <label className="flex items-center gap-1.5 cursor-pointer" title="Süreklilik puanı düşükse kareyi otomatik yeniden üretir"><input type="checkbox" className="accent-[#8B5CF6]" checked={autoFix} onChange={e => setAutoFix(e.target.checked)} />Otomatik düzelt</label>
                             <label className="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" className="accent-[#8B5CF6]" checked={showP} onChange={e => setShowP(e.target.checked)} />Promptlar</label>
+                            {privateGalleryEnabled && <a href="https://github.com/ElizEge/AiFotofilm-Private-Gallery/blob/main/gallery/GALLERY.md" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-lg border border-violet-500/30 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 font-semibold" title="Özel GitHub galerisini yeni sekmede açar; görselleri otomatik kaydetmez">🔒 Özel Galerim ↗</a>}
                             <Btn tone="g" onClick={() => setSettingsOpen(true)}>⚙ Ayarlar</Btn>
                         </div>
                     </div>
