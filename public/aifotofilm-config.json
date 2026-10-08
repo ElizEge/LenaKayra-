@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "features": {
+    "privateGallery": {
+      "label": "🔒 Özel Galerim ↗",
+      "url": "https://github.com/ElizEge/AiFotofilm-Private-Gallery/blob/main/gallery/GALLERY.md",
+      "enabled": true
+    }
+  },
+  "notes": "Public UI configuration only. No tokens, private image URLs or private data."
+}
