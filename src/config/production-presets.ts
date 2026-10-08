@@ -1,3 +1,4 @@
+import { Icons } from '../components/Icons';
 /** V20.2 extraction candidate. Original presets remain active in Canvas. Only exports added. */
 export const INITIAL_CHARACTERS = [
     { id: "lena", ad: "Lena", yas: 22, sex: "female", genderLock: "ADULT WOMAN / FEMALE — never male, man or boy", dna: "A 22-year-old elegant female model, porcelain skin, oval face, hazel eyes, natural wavy espresso brown hair", img: "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/LENA.png", identitySheet: "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/LENA%20CHARACTER%20IDENTITY%20SHEET.png", identityLocked: true, outfit: "white crop top, light blue denim mini skirt, white sneakers" },
