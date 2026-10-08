@@ -119,6 +119,12 @@ const callApiWithRetry = async (
             if (response.ok) return await response.json();
 
             if (response.status === 429 || response.status >= 500) {
+                
+if (i === retries - 1) {
+    const message = await extractApiErrorMessage(response);
+    throw new Error(`API Hatası (${response.status}): ${message}`);
+}
+
                 await new Promise((resolve, reject) => {
                     const t = setTimeout(resolve, delay * Math.pow(2, i));
                     signal?.addEventListener('abort', () => { 
