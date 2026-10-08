@@ -44,7 +44,7 @@ export async function loadPublicGithubMemory(
         'GitHub hafıza okuma hatası (HTTP ' + response.status + ').' };
     const file: { sha?: string; encoding?: string; content?: string } = await response.json();
     if (!file.sha || file.encoding !== 'base64' || !file.content) return { ok: false, error: 'GitHub dosya biçimi desteklenmiyor.' };
-    const binary = atob(file.content.replace(/\\s/g, ''));
+    const binary = atob(file.content.replace(/\s/g, ''));
     const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
     const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
     const sha = file.sha;
