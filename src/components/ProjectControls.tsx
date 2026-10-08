@@ -1,7 +1,7 @@
 /** AiFotofilm V20.2 modular extraction; canonical source lines 1537-1697. */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { getSavedApiKey } from '../engine/gemini-api';
-import { Icons } from 'Icons';
+import { Icons } from './Icons';
 import { usePersist, LOCK, TYPES, XFER, Btn, Inp, Area, hasScore, Badge, Xfer } from '../core/shared';
 import { PROFILE_KEYS } from '../modules/Influencer';
 
