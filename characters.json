@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "characters": [
+    {
+      "id": "lena",
+      "ad": "Lena",
+      "yas": 22,
+      "sex": "female",
+      "genderLock": "ADULT WOMAN / FEMALE — never male, man or boy",
+      "dna": "A 22-year-old elegant female model, porcelain skin, oval face, hazel eyes, natural wavy espresso brown hair",
+      "img": "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/LENA.png",
+      "identitySheet": "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/LENA%20CHARACTER%20IDENTITY%20SHEET.png",
+      "identityLocked": true,
+      "outfit": "white crop top, light blue denim mini skirt, white sneakers",
+      "influencerProfile": {
+        "niche": "Fashion & Lifestyle",
+        "personality": "Elegant, natural, confident",
+        "city": "İstanbul",
+        "contentPillars": "Fashion 30%, Lifestyle 30%, Travel 15%, Beauty 15%, Personal 10%",
+        "visualIdentity": "Elegant candid editorial, premium but believable social media photography",
+        "captionVoice": "Minimal, elegant, warm; short Turkish/English mix when natural",
+        "postingFrequency": 3,
+        "favoriteLocations": "city streets, tasteful cafés, hotels, waterfront, boutiques",
+        "wardrobeCapsule": "refined contemporary fashion, neutral layers, occasional statement piece",
+        "avoid": "same café, same outfit, repetitive mirror selfies, over-polished artificial poses"
+      }
+    },
+    {
+      "id": "kayra",
+      "ad": "Kayra",
+      "yas": 21,
+      "sex": "female",
+      "genderLock": "ADULT WOMAN / FEMALE — Kayra must NEVER be rendered as male, man, boy or masculine-presenting male",
+      "dna": "A 21-year-old energetic ADULT FEMALE model / young woman, slim athletic feminine build, light skin, bright blue eyes, high bob pastel pink hair",
+      "img": "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/KAYRA.png",
+      "identitySheet": "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/KAYRA%20CHARACTER%20IDENTITY%20SHEET.png",
+      "identityLocked": true,
+      "outfit": "black crop top, white leather mini skirt, black boots",
+      "influencerProfile": {
+        "niche": "Street Fashion & Youth Lifestyle",
+        "personality": "Energetic, playful, colorful",
+        "city": "İstanbul",
+        "contentPillars": "Street Style 30%, Lifestyle 25%, Travel 15%, Café 15%, Beauty & Fun 15%",
+        "visualIdentity": "Youthful candid street photography, playful direct flash, colorful everyday moments",
+        "captionVoice": "Playful, concise, emoji-friendly, Turkish with occasional English phrases",
+        "postingFrequency": 3,
+        "favoriteLocations": "street corners, cafés, concerts, airports, colorful interiors",
+        "wardrobeCapsule": "streetwear, crop silhouettes, playful accessories, bold color accents",
+        "avoid": "stiff luxury posing, repeated locations, identical framing, overly serious captions"
+      }
+    },
+    {
+      "id": "metin",
+      "ad": "Metin",
+      "yas": 40,
+      "sex": "male",
+      "genderLock": "ADULT MAN / MALE",
+      "dna": "A 40-year-old witty male model, solid athletic build, light brown skin, brown eyes, short neat black hair, defined jawline",
+      "img": "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/MET%C4%B0N.png",
+      "identitySheet": "https://raw.githubusercontent.com/ElizEge/LenaKayra-/main/MET%C4%B0N%20CHARACTER%20IDENTITY%20SHEET.png",
+      "identityLocked": true,
+      "outfit": "dark green tactical shirt, black cargo pants",
+      "influencerProfile": {
+        "niche": "Photography & Urban Lifestyle",
+        "personality": "Witty, cinematic, grounded",
+        "city": "Trabzon",
+        "contentPillars": "Photography 30%, Urban Life 25%, Travel 20%, Coffee 15%, Behind the Scenes 10%",
+        "visualIdentity": "Cinematic documentary realism, authentic urban moments, photographer lifestyle",
+        "captionVoice": "Short, witty, grounded Turkish; occasional cinematic observation",
+        "postingFrequency": 3,
+        "favoriteLocations": "city streets, viewpoints, cafés, coast, behind-the-scenes locations",
+        "wardrobeCapsule": "smart casual, practical dark layers, photographer-friendly outfits",
+        "avoid": "repetitive tactical styling, fake luxury, same camera pose, generic motivational captions"
+      }
+    }
+  ]
+}
